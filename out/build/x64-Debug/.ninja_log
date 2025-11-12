@@ -1,0 +1,6 @@
+# ninja log v6
+19	580	7846358396125893	CMakeFiles/MyOpenGLApp.dir/glad/src/glad.c.obj	63905b1ba2216192
+3	351	7846360979162256	CMakeFiles/MyOpenGLApp.dir/main.cpp.obj	a3b47849abc5711e
+352	908	7846360982668601	MyOpenGLApp.exe	b3c9cb1040715f15
+37	780	7846373055772817	CMakeFiles/MyOpenGLApp.dir/main.cpp.obj	a3b47849abc5711e
+780	978	7846373063260306	MyOpenGLApp.exe	b3c9cb1040715f15

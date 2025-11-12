@@ -1,0 +1,41 @@
+﻿  Building Custom Rule F:/glfw/glfw-3.4/tests/CMakeLists.txt
+  inputlag.c
+F:\glfw\glfw-3.4\deps\nuklear.h(3433,37): warning C5287: 操作数是不同的枚举类型“nk_edit_types”和“nk_edit_flags”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(5265,47): warning C5287: 操作数是不同的枚举类型“nk_panel_set”和“nk_panel_type”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(5266,42): warning C5287: 操作数是不同的枚举类型“nk_panel_set”和“nk_panel_type”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(5359,46): warning C5287: 操作数是不同的枚举类型“nk_window_flags”和“nk_panel_flags”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(15599,18): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(15604,18): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(16822,5): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(16916,5): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(16989,5): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(17252,5): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(23770,44): warning C5287: 操作数是不同的枚举类型“nk_edit_types”和“nk_edit_flags”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+F:\glfw\glfw-3.4\deps\nuklear.h(25334,44): warning C5287: 操作数是不同的枚举类型“nk_panel_type”和“nk_panel_set”；请使用显式强制转换来静音此警告
+  (编译源文件“../../tests/inputlag.c”)
+  
+  getopt.c
+  正在生成代码...
+  inputlag.vcxproj -> F:\glfw\glfw-3.4\build\tests\Debug\inputlag.exe
