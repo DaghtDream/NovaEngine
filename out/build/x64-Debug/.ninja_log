@@ -1,6 +1,11 @@
 # ninja log v6
-19	580	7846358396125893	CMakeFiles/MyOpenGLApp.dir/glad/src/glad.c.obj	63905b1ba2216192
-3	351	7846360979162256	CMakeFiles/MyOpenGLApp.dir/main.cpp.obj	a3b47849abc5711e
-352	908	7846360982668601	MyOpenGLApp.exe	b3c9cb1040715f15
-37	780	7846373055772817	CMakeFiles/MyOpenGLApp.dir/main.cpp.obj	a3b47849abc5711e
-780	978	7846373063260306	MyOpenGLApp.exe	b3c9cb1040715f15
+30	300	7926966829228181	CMakeFiles/MyOpenGLApp.dir/glad/src/glad.c.obj	729b1b221c3bd76b
+9	487	7926966828983019	CMakeFiles/MyOpenGLApp.dir/imgui/imgui.cpp.obj	cf7bea013879ce4d
+4	323	7927009377315470	CMakeFiles/MyOpenGLApp.dir/main.cpp.obj	9be451877b14ba54
+19	234	7926966829118072	CMakeFiles/MyOpenGLApp.dir/imgui/imgui_tables.cpp.obj	1ec9a257a396e610
+323	455	7927009380491551	MyOpenGLApp.exe	9394c61330dc0bbd
+12	241	7926966828983019	CMakeFiles/MyOpenGLApp.dir/imgui/imgui_demo.cpp.obj	752a06c141cad593
+23	395	7926966829156710	CMakeFiles/MyOpenGLApp.dir/imgui/backends/imgui_impl_glfw.cpp.obj	3e596bb335a9a808
+26	260	7926966829188095	CMakeFiles/MyOpenGLApp.dir/imgui/backends/imgui_impl_opengl3.cpp.obj	cb5989499f717e1d
+16	304	7926966828983019	CMakeFiles/MyOpenGLApp.dir/imgui/imgui_draw.cpp.obj	930f0159957db557
+24	836	7926962811826129	CMakeFiles/MyOpenGLApp.dir/imgui/imgui_widgets.cpp.obj	e05592e1dd29733f
