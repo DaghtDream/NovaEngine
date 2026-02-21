@@ -28,13 +28,13 @@ namespace SenceManger
 
 	public:
 		//构造函数
-		explicit SenceManger::GameObject(
+		explicit GameObject(
 			const std::string& name = "GameObject",
 			bool active = true,
 			Sence* sence = nullptr
 		);
 		//析构函数
-		virtual ~SenceManger::GameObject() = default;
+		virtual ~GameObject() = default;
 
 
 		//获取名称
