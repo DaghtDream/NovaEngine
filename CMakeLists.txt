@@ -23,8 +23,11 @@ add_executable(MyOpenGLApp
     imguizmo/ImGuizmo.cpp
     imgui/backends/imgui_impl_glfw.cpp
     imgui/backends/imgui_impl_opengl3.cpp
-    src/Sence/GameObject/Cube.cpp
- )  
+    src/Sence/Primitives/Cube.cpp
+    src/Sence/Core/GameObject.cpp
+    src/Sence/Core/Tramsform.cpp
+    src/Sence/Core/Sence.cpp
+)  
 
 target_sources(MyOpenGLApp PRIVATE "${GLAD_DIR}/src/glad.c")  
 

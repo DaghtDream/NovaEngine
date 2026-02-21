@@ -113,7 +113,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\3DEditor_gitee\imguizmo\ImGuizmo.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_glfw.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\GameObject\Cube.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Primitives\Cube.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\GameObject.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Tramsform.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Sence.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup />

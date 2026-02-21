@@ -28,7 +28,16 @@
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\GameObject\Cube.cpp">
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Primitives\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Tramsform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Sence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="F:\3DEditor_gitee\glad\src\glad.c">
