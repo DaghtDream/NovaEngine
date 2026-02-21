@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 #include <glm.hpp>
-#inlcude "Core/transform.h"
+#include "Core/Transform.h"
 
 
 namespace SenceManger
