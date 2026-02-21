@@ -38,4 +38,4 @@
 *.vspscc
 *.vssscc
 *.vscc
-/out/build/x64-Debug/.cmake/api/v1/reply/index-2026-02-21T07-14-56-0464.json
+index-*.json
