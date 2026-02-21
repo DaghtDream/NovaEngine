@@ -5,6 +5,7 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <stdio.h>
+#include <ImGuizmo.h>
 
 
 
@@ -176,6 +177,8 @@ int main()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui::NewFrame();
+
+		ImGuizmo::BeginFrame();
 
 		// 构建你的 UI 窗口（例如显示演示窗口）
 		ImGui::ShowDemoWindow();  // 至少加一个窗口测试

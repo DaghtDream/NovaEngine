@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;F:\3DEditor_gitee\imguizmo;F:\3DEditor_gitee\glm;F:\3DEditor_gitee\include\Core;F:\3DEditor_gitee\include\Platform;F:\3DEditor_gitee\include\Rendering;F:\3DEditor_gitee\include\Sence;F:\3DEditor_gitee\include\UI;F:\3DEditor_gitee\include\Utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -61,10 +61,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;IMGUI_IMPL_OPENGL_LOADER_GLAD;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;F:\3DEditor_gitee\imguizmo;F:\3DEditor_gitee\glm;F:\3DEditor_gitee\include\Core;F:\3DEditor_gitee\include\Platform;F:\3DEditor_gitee\include\Rendering;F:\3DEditor_gitee\include\Sence;F:\3DEditor_gitee\include\UI;F:\3DEditor_gitee\include\Utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\3DEditor_gitee\glad\include;F:\3DEditor_gitee\glfw-3.4\include;F:\3DEditor_gitee\imgui;F:\3DEditor_gitee\imgui\backends;F:\3DEditor_gitee\imguizmo;F:\3DEditor_gitee\glm;F:\3DEditor_gitee\include\Core;F:\3DEditor_gitee\include\Platform;F:\3DEditor_gitee\include\Rendering;F:\3DEditor_gitee\include\Sence;F:\3DEditor_gitee\include\UI;F:\3DEditor_gitee\include\Utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -104,14 +104,16 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="F:\3DEditor_gitee\main.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\main.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\imgui.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\imgui_demo.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\imgui_draw.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\imgui_tables.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\imguizmo\ImGuizmo.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_glfw.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="F:\3DEditor_gitee\src\Sence\GameObject\Cube.cpp" />
     <ClCompile Include="F:\3DEditor_gitee\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup />
