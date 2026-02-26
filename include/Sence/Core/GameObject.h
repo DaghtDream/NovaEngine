@@ -24,6 +24,7 @@ namespace SenceManger
 		std::vector<std::shared_ptr<GameObject>> children;//子对象列表
 		std::weak_ptr<GameObject> parent;//父对象指针
 
+
 		Sence* sence;//所属场景指针
 
 	public:
@@ -68,7 +69,7 @@ namespace SenceManger
 
 		//更新函数
 		virtual void OnStart();//对象创建时调用一次
-		virtual void Update(float deltaTime);//每帧调用一次，deltaTime为两帧之间的时间间隔
+		virtual void OnUpdate(float deltaTime);//每帧调用一次，deltaTime为两帧之间的时间间隔
 		virtual void OnDestroy();//对象销毁时调用一次
 
 		//设置所属场景
