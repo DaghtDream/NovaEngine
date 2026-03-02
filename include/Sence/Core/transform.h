@@ -49,8 +49,9 @@ namespace SenceManger
 
 
 		//计算变换矩阵
-
-
+		//变换矩阵计算顺序：缩放->旋转->平移
+		//变换矩阵计算方法
+		glm::mat4 GetMirix() const;
 	};
 
 }

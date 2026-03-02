@@ -3,34 +3,21 @@
 #include <memory>
 #include <glm.hpp>
 #include "Core/GameObject.h"
-#include <string>
+
+
 
 namespace SenceManger
-{	
-	class Sence;
+{
+	class GameObject;
 }
 
 namespace Primitives
 {
-	class Cube :public SenceManger::GameObject
-	{
-	public:
-		//构造函数
-		explicit Cube(
-			const std::string& name = "Cube",
-			bool active = true,
-			SenceManger::Sence* sence = nullptr
-		);
-
-		//析构函数
-		virtual ~Cube() = default;
-
-		//更新函数
-		virtual void OnStart() override;
-		virtual void OnUpdate(float deltaTime) override;
-		virtual void OnDestroy() override;
-
-	};
+	std::shared_ptr<SenceManger::GameObject> CreateCube(
+		const glm::vec3& position = glm::vec3(0.0f),
+		const glm::quat& rotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f),
+		const glm::vec3& scale = glm::vec3(1.0f)
+	);
 }
 
 
