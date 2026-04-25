@@ -5,6 +5,7 @@
 #include <memory>
 #include <glm.hpp>
 #include "Core/Transform.h"
+#include "ComPonent.h"
 
 
 namespace SenceManger
@@ -19,6 +20,9 @@ namespace SenceManger
 
 
 		Transform transform;//变换组件
+
+
+		std::vector<std::shared_ptr<Component>> component;//组件列表
 
 
 		std::vector<std::shared_ptr<GameObject>> children;//子对象列表
@@ -76,6 +80,47 @@ namespace SenceManger
 		void SetSence(Sence* sence);
 		//获取所属场景
 		const Sence* GetSence() const;
+
+		//组件管理
+		//添加组件
+		template<typename T, typename... Args>
+		T* AddComPonent(Args&&... args)
+		{
+			static_assert(std::is_base_of < Component, T>::value, "T must derive from ComPonent");
+			auto comp = std::make_shared<T>(std::forward<Args>(args)...);
+			comp->gameObject = this;
+			component.push_back(comp);
+			return comp.get();
+		};
+
+		//获取组件
+		template<typename T>
+		T* GetComPonent() const
+		{
+			for (auto& comp : component)
+			{
+				if(auto casted = std::dynamic_pointer_cast<T> (comp))
+					return casted.get();
+			}
+			return nullptr
+		};
+
+		//删除组件
+		template<typename T>
+		void RemoveComPonent()
+		{
+			auto it = std::remove_if(component.begin(), component.end(),
+				[](const std::shared_ptr<Component>& comp)
+				{
+					return std::dynamic_pointer_cast<T>(comp) != nullptr;
+					//使用lambda表达式作为条件，删除所有类型为T的组件
+				});
+			if(it != component.end())
+			{
+				component.erase(it, component.end());
+			}
+		};
+
 	};
 }
 

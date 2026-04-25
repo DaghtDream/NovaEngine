@@ -100,19 +100,29 @@ namespace SenceManger
 	}
 
 	//更新函数
+
+	//对象创建时调用一次
 	void GameObject::OnStart()
 	{
-		//对象创建时调用一次
+		for (auto& c : component)
+			c->OnStart();
+		
 	}
 
+	//每帧调用一次，deltaTime为两帧之间的时间间隔
 	void GameObject::OnUpdate(float deltaTime)
 	{
-		//每帧调用一次，deltaTime为两帧之间的时间间隔
+		for (auto& c : component)
+			c->OnUpdate(deltaTime);
+
+		
 	}
 
+	//对象销毁时调用一次
 	void GameObject::OnDestroy()
 	{
-		//对象销毁时调用一次
+		for(auto& c: component)
+			c->OnDestroy();
 	}
 
 	//设置所属场景
