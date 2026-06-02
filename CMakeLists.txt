@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(3DEditor)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 set(GLFW_DIR "F:/3DEditor_gitee/glfw-3.4/build/src/Debug")
 set(GLFW_LIBRARY "${GLFW_DIR}/glfw3.lib")
@@ -23,11 +23,14 @@ add_executable(MyOpenGLApp
     imguizmo/ImGuizmo.cpp
     imgui/backends/imgui_impl_glfw.cpp
     imgui/backends/imgui_impl_opengl3.cpp
-    src/Sence/Primitives/Cube.cpp
-    src/Sence/Core/GameObject.cpp
-    src/Sence/Core/Tramsform.cpp
-    src/Sence/Core/Sence.cpp
-)  
+    
+    
+    
+   "include/Utils/Logger.h" "include/UI/GUILogger.h"  
+   "include/Scene/DataComponents/Mesh.h" 
+   "include/Scene/ICapabilities/ICapabilities.h" 
+   "include/Scene/Capabilities/Render.h"
+   "include/Scene/ICommand/ICommand.h" "include/Scene/Command/CreateObjectCommand.h" "src/Scene/Command/CreateObjectCommand.cpp" "include/Scene/Command/DestroyObjectCommand.h" "src/Scene/Command/DestroyObjectCommand.cpp" "src/Scene/Core/Scene.cpp")  
 
 target_sources(MyOpenGLApp PRIVATE "${GLAD_DIR}/src/glad.c")  
 
@@ -45,7 +48,7 @@ target_include_directories(MyOpenGLApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Core
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Platform
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Rendering
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Sence
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Scene
     ${CMAKE_CURRENT_SOURCE_DIR}/include/UI
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Utils
 )

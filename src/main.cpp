@@ -180,7 +180,7 @@ int main()
 
 		ImGuizmo::BeginFrame();
 
-		// 构建你的 UI 窗口（例如显示演示窗口）
+		// 构建 UI 窗口（例如显示演示窗口）
 		ImGui::ShowDemoWindow();  // 至少加一个窗口测试
 
 		// 渲染 ImGui
@@ -195,7 +195,7 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// 绘制你的 3D 物体（矩形）
+		// 绘制 3D 物体（矩形）
 		glUseProgram(shaderProgram);
 		float timeValue = glfwGetTime();
 		float GreenValue = (sin(timeValue) / 2.0f) + 0.5f;

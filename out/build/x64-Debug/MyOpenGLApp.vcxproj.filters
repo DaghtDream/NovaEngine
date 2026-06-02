@@ -28,16 +28,13 @@
     <ClCompile Include="F:\3DEditor_gitee\imgui\backends\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Primitives\Cube.cpp">
+    <ClCompile Include="F:\3DEditor_gitee\src\Scene\Command\CreateObjectCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\GameObject.cpp">
+    <ClCompile Include="F:\3DEditor_gitee\src\Scene\Command\DestroyObjectCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Tramsform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\3DEditor_gitee\src\Sence\Core\Sence.cpp">
+    <ClCompile Include="F:\3DEditor_gitee\src\Scene\Core\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="F:\3DEditor_gitee\glad\src\glad.c">
@@ -45,9 +42,38 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="F:\3DEditor_gitee\include\Utils\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\UI\GUILogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\DataComponents\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\ICapabilities\ICapabilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\Capabilities\Render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\ICommand\ICommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\Command\CreateObjectCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\3DEditor_gitee\include\Scene\Command\DestroyObjectCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="F:\3DEditor_gitee\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{12CA4C1B-BD8C-31BE-A184-ADF4543DDADB}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{143E874E-5150-308D-89C1-A4912A335F05}</UniqueIdentifier>
     </Filter>
