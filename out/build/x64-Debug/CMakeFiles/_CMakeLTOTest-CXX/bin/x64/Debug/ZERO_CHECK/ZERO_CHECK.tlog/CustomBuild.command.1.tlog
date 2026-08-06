@@ -1,0 +1,10 @@
+^F:\NOVAENGINE\OUT\BUILD\X64-DEBUG\CMAKEFILES\_CMAKELTOTEST-CXX\BIN\CMAKEFILES\A694C4A4915A911211E017C9337C4B69\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SF:/NovaEngine/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/src -BF:/NovaEngine/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/NovaEngine/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/lto-test.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

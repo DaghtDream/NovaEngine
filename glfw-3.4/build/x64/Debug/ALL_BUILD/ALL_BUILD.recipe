@@ -98,7 +98,7 @@
       <FullPath>F:\glfw\glfw-3.4\build\examples\Debug\windows.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>F:\glfw\glfw-3.4\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>F:\NovaEngine\glfw-3.4\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,6 +1,6 @@
-^F:\3DEDITOR_GITEE\OUT\BUILD\X64-DEBUG\CMAKEFILES\089B41EAA010DF480EE61001B0B22274\GENERATE.STAMP.RULE
+^F:\NOVAENGINE\OUT\BUILD\X64-DEBUG\CMAKEFILES\EA30A71B2CDAFDE1C10D454F0E3AD62D\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SF:/3DEditor_gitee -BF:/3DEditor_gitee/out/build/x64-Debug --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/3DEditor_gitee/out/build/x64-Debug/3DEditor.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SF:/NovaEngine -BF:/NovaEngine/out/build/x64-Debug --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/NovaEngine/out/build/x64-Debug/NovaEngine.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

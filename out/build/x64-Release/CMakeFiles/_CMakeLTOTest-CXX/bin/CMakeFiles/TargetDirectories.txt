@@ -1,0 +1,4 @@
+F:/NovaEngine/out/build/x64-Release/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+F:/NovaEngine/out/build/x64-Release/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+F:/NovaEngine/out/build/x64-Release/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+F:/NovaEngine/out/build/x64-Release/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir

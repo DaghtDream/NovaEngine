@@ -1,3 +1,5 @@
-F:/3DEditor_gitee/out/build/x64-Debug/CMakeFiles/MyOpenGLApp.dir
-F:/3DEditor_gitee/out/build/x64-Debug/CMakeFiles/ALL_BUILD.dir
-F:/3DEditor_gitee/out/build/x64-Debug/CMakeFiles/ZERO_CHECK.dir
+F:/NovaEngine/out/build/x64-Debug/CMakeFiles/NovaEngine_Core.dir
+F:/NovaEngine/out/build/x64-Debug/CMakeFiles/NovaEngine.dir
+F:/NovaEngine/out/build/x64-Debug/CMakeFiles/ALL_BUILD.dir
+F:/NovaEngine/out/build/x64-Debug/CMakeFiles/ZERO_CHECK.dir
+F:/NovaEngine/out/build/x64-Debug/test/CMakeFiles/NovaEngine_Tests.dir
