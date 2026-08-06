@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="F:\3DEditor_gitee\out\build\x64-Debug\CMakeFiles\089b41eaa010df480ee61001b0b22274\generate.stamp.rule">
+    <CustomBuild Include="F:\NovaEngine\out\build\x64-Debug\CMakeFiles\ea30a71b2cdafde1c10d454f0e3ad62d\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{96DC13BE-62FB-3946-B6D1-9CA8CDF0E0C7}</UniqueIdentifier>
+      <UniqueIdentifier>{C557571A-4647-3852-B453-D9F4D3AF0901}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
