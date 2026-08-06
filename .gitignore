@@ -39,3 +39,4 @@
 *.vssscc
 *.vscc
 index-*.json
+out/
