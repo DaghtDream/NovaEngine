@@ -1,22 +1,29 @@
 #pragma once
-#include "ICapabilities/ICapabilities.h" 
+
+#include <memory>
+#include <glad/glad.h>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
+
+#include "ICapabilities/ICapabilities.h"
 #include "Core/SceneContants.h"
 #include "Core/Scene.h"
-#include "Tool/ProfileBlock.h"
+#include "DataComponents/Mesh.h"
+#include "Shader.h"
+#include "ReadingFile.h"
+#include "DataComponents/Camera.h"
 
 namespace SceneManager::Capability
 {
 	class Render : public SceneManager::ICapabilities
 	{
 	private:
-		static std::string LoadShaderFile(const std::string& filePath);
+		static Mesh CreateQuadMesh(float width, float height);
 
-		unsigned int m_shaderProgram{ 0 };
-		int vertexModelLocation{ -1 };
-		int vertexColorLocation{ -1 };
+		std::unique_ptr<Rendering::Shader> m_shader;
 
 	public:
-
 		Render()
 		{
 			m_priority = RENDER_PRIORITY_MIN;
@@ -24,16 +31,12 @@ namespace SceneManager::Capability
 
 		~Render() override = default;
 
-		int GetPriority() const override { return 101; } 
+		int GetPriority() const override { return 101; }
 
 		void OnAttach(Scene* Scene) override;
-
 		void OnUpdate(float dt) override;
-
 		void OnDetach() override;
 
 		const char* GetName() const override { return "Render"; }
-
-
 	};
 }

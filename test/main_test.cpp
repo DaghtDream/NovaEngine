@@ -5,6 +5,7 @@
 #include "SceneTest/stressTest_1.h"
 #include "SceneTest/stressTest_2.h"
 #include "SceneTest/stressTest_3.h"
+#include "SceneTest/CameraTest/CameraTest1.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -64,6 +65,8 @@ int main()
 
 	//std::cout << "以下是集成测试(Integration_Test)部分的测试内容" << std::endl;
 
+
+
     if (!InitialzeOpenGLTestContext()) {
         return -1; // 环境搭建失败，直接退出
     }
@@ -72,15 +75,17 @@ int main()
 
     SceneManager::Scene scene;
 
+    Test::CameraTest1_Run(scene);
+
     //以下是压力测试1的测试内容
     //Test::stressTest_1_Run(scene);
 
 	//以下是压力测试2的测试内容
-    Test::stressTest_2_Run(scene, 1);
+    //Test::stressTest_2_Run(scene, 2);
 
 	//以下是压力测试3的测试内容
  //   Test::stressTest_3_Run(scene);
-
+    
     scene.SceneBegin();
 
  //   int CreateCount = 500;

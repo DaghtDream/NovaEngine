@@ -1,231 +1,176 @@
 #include <iostream>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#include <stdio.h>
 #include <ImGuizmo.h>
 
-
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+#include "Core/Scene.h"
+#include "DataComponents/Camera.h"
+#include "DataComponents/Mesh.h"
+#include "Command/CreateObjectCommand.h"
+#include "MeshFactory.h"
+#include <glm.hpp>
+#include "Capabilities/Render.h"
+#include "Capabilities/CameraController.h"
 
 static void glfw_error_callback(int error, const char* description)
 {
-	fprintf(stderr, "Glfw Error %d: %s\n", error, description);
+    std::cerr << "Glfw Error " << error << ": " << description << std::endl;
 }
 
 int main()
 {
-	glfwSetErrorCallback(glfw_error_callback);
-	if (!glfwInit())
-		return 1;
+    glfwSetErrorCallback(glfw_error_callback);
+    if (!glfwInit())
+        return 1;
 
-	const char* glsl_version  = "#version 430 core";
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    const char* glsl_version = "#version 430 core";
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWmonitor* primary = glfwGetPrimaryMonitor();
-	float main_scale = primary ? ImGui_ImplGlfw_GetContentScaleForMonitor(primary) : 1.0f;//获取主显示器的DPI缩放比例
+	GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
 
-	GLFWwindow* window = glfwCreateWindow((int)(800 * main_scale), (int)(600 * main_scale), "OpenGL Window", nullptr, nullptr);//创建窗口
+    glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
+    glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-	if (window == nullptr)
-	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
+	int workX, workY, workWidth, workHeight;
+	glfwGetMonitorWorkarea(primaryMonitor, &workX, &workY, &workWidth, &workHeight);
 
-	glfwMakeContextCurrent(window);//创建OpenGL上下文
-	glfwSwapInterval(1);//启用垂直同步
+    GLFWwindow* window = glfwCreateWindow(workWidth, workHeight, "OpenGL Window", nullptr, nullptr);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
+    if (window == nullptr)
+    {
+        std::cerr << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
 
-	glViewport(0, 0, (int)800*main_scale, (int)600*main_scale);
+    glfwGetWindowPos(window, &workX,&workY);
+    glfwFocusWindow(window);
 
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cerr << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }
 
-	ImGui::StyleColorsDark();
-	ImGui::GetStyle().ScaleAllSizes(main_scale);
-	ImGui::GetStyle().FontScaleDpi = main_scale;
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init(glsl_version);
+    ImGui::StyleColorsDark();
 
-	const char* vertexShaderSource = "#version 430 core\n"
-		"layout (location = 0) in vec3 aPos;\n"
-		"void main()\n"
-		"{\n"
-		"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-		"}\0";
+	float scaleFactor = 2.0f;
 
-	unsigned int vertexShader;
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	ImGui::GetStyle().ScaleAllSizes(scaleFactor);
 
-	glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
-	glCompileShader(vertexShader);
+	ImFontConfig fontConfig;
+	fontConfig.SizePixels = 20.0f * scaleFactor;
+	io.Fonts->AddFontDefault(&fontConfig);
 
-	int success;
-	char infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
 
-	if(!success)
-	{
-		glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
+    if (!ImGui_ImplGlfw_InitForOpenGL(window, true))
+    {
+        std::cerr << "ImGui_ImplGlfw_InitForOpenGL failed!" << std::endl;
+        return -1;
+    }
+    if (!ImGui_ImplOpenGL3_Init(glsl_version))
+    {
+        std::cerr << "ImGui_ImplOpenGL3_Init failed!" << std::endl;
+        return -1;
+    }
 
-	const char* fragmentShaderSource = "#version 430 core\n"
-		"out vec4 FragColor;\n"
-		"uniform vec4 ourColor;\n"
-		"void main()\n"
-		"{\n"
-		"   FragColor = ourColor;\n"
-		"}\0";
+    SceneManager::Scene scene;
 
-	unsigned int fragmentShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    scene.PushCommand<SceneManager::Command::CreateObjectCommand>("CameraObject");
+    scene.PushCommand<SceneManager::Command::CreateObjectCommand>("MeshObject");
+    scene.FlushCommand();
 
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
-	glCompileShader(fragmentShader);
+    Camera camera;
+    camera.IsMainCamera = true;
+    scene.AddComponent<Camera>(0, camera);
 
-	unsigned int shaderProgram;
-	shaderProgram = glCreateProgram();
+    Mesh mesh = Rendering::MeshFactory::CreateRectangle();
+    scene.AddComponent<Mesh>(1, mesh);
+    scene.GetObject(1)->rotation = glm::angleAxis(glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
+    scene.GetObject(0)->position = glm::vec3(0.0f, 0.0f, 3.0f);
 
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-	if(!success)
-	{
-		glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
-		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-	}
+    SceneManager::Capability::Render* renderCapability = new SceneManager::Capability::Render();
+    scene.AddCapability(renderCapability);
+
+    SceneManager::Capability::CameraController* cameraControllerCapability =
+        new SceneManager::Capability::CameraController(glfwGetCurrentContext());
+    scene.AddCapability(cameraControllerCapability);
+
+	SceneManager::GameObject* cameraObject = scene.GetObject(0);
+    Camera* mainCamera = nullptr;
 	
-	glUseProgram(shaderProgram);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+    scene.SceneBegin();
 
-	float vertices[] = {
-		 0.5f,  0.5f, 0.0f, 
-		 0.5f, -0.5f, 0.0f,  
-		-0.5f, -0.5f, 0.0f, 
-		-0.5f,  0.5f, 0.0f
-	};
+    while (!glfwWindowShouldClose(window))
+    {
+        glfwPollEvents();
 
-	unsigned int indices[] = {  
-		0, 1, 3,   
-		1, 2, 3    
-	};
+        ImGui_ImplGlfw_NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui::NewFrame();
 
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
+        ImGuizmo::BeginFrame();
 
-	unsigned int VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+        ImGui::Begin("Debug Panel");
 
-	unsigned int EBO;
-	glGenBuffers(1, &EBO);
+        float FPS = 1.0f / ImGui::GetIO().DeltaTime;
+        ImGui::Text("FPS: %.1f", FPS);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		ImGui::Text("Object Count: %llu", scene.GetObjectCount());
 
+        if (scene.GetComponent(0, mainCamera) && mainCamera != nullptr)
+        {
+            ImGui::SliderFloat("FOV", &mainCamera->fov, 20.0f, 120.0f);
+			ImGui::DragFloat3("Camera Position", &cameraObject->position.x, 0.1f);
+        }
 
+        ImGui::End();
 
-	glUseProgram(shaderProgram);
-	glBindVertexArray(0);
+        int display_w, display_h;
+        glfwGetFramebufferSize(window, &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
 
-	int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-	if (vertexColorLocation == -1) 
-		std::cout << "错误：找不到uniform变量'ourColor'" << std::endl;
-	
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//线框模式绘图
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//默认填充模式绘图
+        
 
-	while(!glfwWindowShouldClose(window))
-	{
-		glfwPollEvents();
+        scene.Update(0.016f);
 
-		// 处理窗口最小化
-		if (glfwGetWindowAttrib(window, GLFW_ICONIFIED) != 0)
-		{
-			ImGui_ImplGlfw_Sleep(10);
-			continue;
-		}
+        ImGui::Render();
+        ImDrawData* draw_data = ImGui::GetDrawData();
+        if (draw_data)
+            ImGui_ImplOpenGL3_RenderDrawData(draw_data);
 
-		// 开始 ImGui 帧
-		ImGui_ImplGlfw_NewFrame();
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui::NewFrame();
+        glfwSwapBuffers(window);
+    }
 
-		ImGuizmo::BeginFrame();
+    scene.SceneEnd();
 
-		// 构建 UI 窗口（例如显示演示窗口）
-		ImGui::ShowDemoWindow();  // 至少加一个窗口测试
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 
-		// 渲染 ImGui
-		ImGui::Render();
-
-		// 获取帧缓冲大小并设置视口
-		int display_w, display_h;
-		glfwGetFramebufferSize(window, &display_w, &display_h);
-		glViewport(0, 0, display_w, display_h);
-
-		// 清屏
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		// 绘制 3D 物体（矩形）
-		glUseProgram(shaderProgram);
-		float timeValue = glfwGetTime();
-		float GreenValue = (sin(timeValue) / 2.0f) + 0.5f;
-		glUniform4f(vertexColorLocation, 1.0f - GreenValue, GreenValue, 1.0f - GreenValue, 1.0f);
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-		// 最后渲染 ImGui 绘制数据（会覆盖在 3D 画面上）
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-		// 交换缓冲区（只做一次）
-		glfwSwapBuffers(window);
-	}
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-	glDeleteProgram(shaderProgram);
-
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
-
-	glfwDestroyWindow(window);
-
-	glfwTerminate();
-
-	return 0;
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    return 0;
 }

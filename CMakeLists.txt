@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
 project(NovaEngine)
 
+
+
 # ----------------- 配置 /O2 优化 -----------------
 if(MSVC)
     # 确保 Release 模式下严格使用 /O2 (优选速度) 和 /Ob2 (适用于任何合适函数的内联扩展)
@@ -44,6 +46,11 @@ add_library(NovaEngine_Core STATIC
     "include/Rendering/GPUPointLight.h"
     "include/Scene/Core/SceneContants.h"
     "include/Rendering/MeshFactory.h"
+    "include/Scene/Capabilities/ColorBlink.h"
+    "include/Core/Tool/ProfileBlock.h"
+    "include/Rendering/Shader.h"
+    "include/Rendering/ReadingFile.h"
+    "include/Scene/DataComponents/Camera.h"
     
     "src/Scene/Command/CreateObjectCommand.cpp" 
     "src/Scene/Command/DestroyObjectCommand.cpp" 
@@ -58,10 +65,10 @@ add_library(NovaEngine_Core STATIC
     "imguizmo/ImGuizmo.cpp"
     "imgui/backends/imgui_impl_glfw.cpp"
     "imgui/backends/imgui_impl_opengl3.cpp"
-    "include/Scene/Capabilities/ColorBlink.h"
     "src/Scene/Capabilities/ColorBlink.cpp"
-    "include/Core/Tool/ProfileBlock.h"
-)
+    "src/Rendering/Shader.cpp"
+    "src/Rendering/ReadingFile.cpp"
+    "src/Scene/DataComponents/Camera.cpp" "include/Scene/Capabilities/CameraController.h" "src/Scene/Capabilities/CameraController.cpp")
 
 target_sources(NovaEngine_Core PRIVATE "${GLAD_DIR}/src/glad.c")
 
@@ -80,6 +87,7 @@ target_include_directories(NovaEngine_Core PUBLIC
 )
 
 target_compile_definitions(NovaEngine_Core PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
+target_compile_definitions(NovaEngine_Core PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD GLFW_INCLUDE_NONE)
 target_link_libraries(NovaEngine_Core PUBLIC ${GLFW_LIBRARY} OpenGL::GL)
 
 # ----------------- 主程序目标 (NovaEngine) -----------------

@@ -16,7 +16,13 @@ add_executable(NovaEngine_Tests
  "SceneTest/Integration_Test.h"
  "SceneTest/Integration_Test.cpp"
  "SceneTest/stressTest_1.h"
- "SceneTest/stressTest_1.cpp" "SceneTest/stressTest_2.h" "SceneTest/stressTest_2.cpp" "SceneTest/stressTest_3.h" "SceneTest/stressTest_3.cpp")
+ "SceneTest/stressTest_1.cpp"
+ "SceneTest/stressTest_2.h"
+ "SceneTest/stressTest_2.cpp"
+ "SceneTest/stressTest_3.h"
+ "SceneTest/stressTest_3.cpp"
+ "SceneTest/CameraTest/CameraTest1.h"
+ "SceneTest/CameraTest/CameraTest1.cpp")
 
 target_include_directories(NovaEngine_Tests PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
