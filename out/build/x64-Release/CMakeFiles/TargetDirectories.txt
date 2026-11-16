@@ -1,7 +1,0 @@
-F:/NovaEngine/out/build/x64-Release/CMakeFiles/NovaEngine_Core.dir
-F:/NovaEngine/out/build/x64-Release/CMakeFiles/NovaEngine.dir
-F:/NovaEngine/out/build/x64-Release/CMakeFiles/edit_cache.dir
-F:/NovaEngine/out/build/x64-Release/CMakeFiles/rebuild_cache.dir
-F:/NovaEngine/out/build/x64-Release/test/CMakeFiles/NovaEngine_Tests.dir
-F:/NovaEngine/out/build/x64-Release/test/CMakeFiles/edit_cache.dir
-F:/NovaEngine/out/build/x64-Release/test/CMakeFiles/rebuild_cache.dir
